@@ -10,7 +10,7 @@
         <version_command><![CDATA[confindr.py --version]]></version_command>
     </xml>
 
-    <token name="@VERSION@">0.7.2</token>
+    <token name="@VERSION@">0.7.4</token>
 
     <token name="@INTYPES">
         fastq,fastqsanger

@@ -10,7 +10,6 @@
 
     <command detect_errors="exit_code"><![CDATA[
         mkdir input &&
-        mkdir databases &&
         #if str( $reads_input.reads_input_selector ) == "paired"
           ln -s '$reads_input.reads_1' 'input/reads_R1.fastq' &&
           ln -s '$reads_input.reads_2' 'input/reads_R2.fastq' &&
@@ -22,10 +21,8 @@
         
         confindr.py 
           --threads \${GALAXY_SLOTS:-1}
-          --databases 'databases'
           --input_directory 'input'
           --output_name 'output'
-
     ]]></command>
 
     <inputs>
@@ -49,8 +46,12 @@
     </outputs>
 
     <tests>
-        
-
+        <test>
+            <param name="reads_input_selector" value="paired"/>
+            <param name="reads_1" value="test_R1.fastq.gz"/>
+            <param name="reads_2" value="test_R1.fastq.gz"/>
+            <output name="out_file1" file="column_maker_out1.interval"/>
+        </test>       
     </tests>
 
     <help><![CDATA[
