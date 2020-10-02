@@ -1,0 +1,130 @@
+<tool id="confindr" name="ConFindr" version="@VERSION@+galaxy0">
+    <description>
+        Intra-species bacterial contamination detection
+    </description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <expand macro="version_command" />
+
+    <command detect_errors="exit_code"><![CDATA[
+        mkdir input &&
+        #if str( $reads_input.reads_input_selector ) == "paired"
+          ln -s '$reads_input.reads_1' 'input/reads_R1.fastq' &&
+          ln -s '$reads_input.reads_2' 'input/reads_R2.fastq' &&
+        #end if
+        #if str( $reads_input.reads_input_selector ) == "paired_collection"
+          ln -s '$reads_input.reads.forward' 'input/reads_R1.fastq' &&
+          ln -s '$reads_input.reads.reverse' 'input/reads_R2.fastq' &&
+        #end if
+        
+        confindr.py 
+          --threads \${GALAXY_SLOTS:-1}  ## [CB] this is carried over from testtoolshed
+          --input_directory 'input'
+          --output_name 'output'
+          #if $options.quality_cutoff:
+          --quality_cutoff $options.quality_cutoff
+          #end if
+          #if $options.base_cutoff:
+          --base_cutoff $options.base_cutoff
+          #end if
+          #if $options.base_fraction_cutoff:
+          --base_fraction_cutoff $options.base_fraction_cutoff
+          #end if
+          #if $options.min_matching_hashes:
+          --min_matching_hashes $options.min_matching_hashes
+          #end if
+          #if $options.data_type:
+          --data_type $options.data_type
+          #end if
+          --verbosity debug  ## [CB] possibly just for development
+
+    ]]></command>
+
+    <inputs>
+        <conditional name="reads_input">
+            <param name="reads_input_selector" type="select" label="Paired-end reads or paired collection" help="Select between paired and paired collection">
+                <option value="paired">Paired</option>
+                <option value="paired_collection">Paired Collection</option>
+            </param>
+            <when value="paired">
+                <param name="reads_1" type="data" format="@INTYPES@" label="Select first set of reads" help="Specify dataset with forward reads"/>
+                <param name="reads_2" type="data" format="@INTYPES@" label="Select second set of reads" help="Specify dataset with reverse reads"/>
+            </when>
+            <when value="paired_collection">
+                <param name="reads" format="@INTYPES@" type="data_collection" collection_type="paired" label="Select a paired collection" help="See help section for an explanation of dataset collections"/>
+            </when>
+        </conditional>
+        <section name="options" title="Set options" expanded="False">
+            <param name="data_type" type="select" label="Data type" help="Type of input data">
+                <option value="Illumina" selected="true">Illumina</option>
+                <option value="Nanopore">Nanopore</option>
+            </param>
+            <param argument="--quality_cutoff" type="integer" value="20" optional="true" min="0" label="Quality Cutoff" help="Base quality needed to support a multiple allele call."/>
+            <param argument="--base_cutoff" type="integer" value="2" optional="true" min="0" label="Base Cutoff" help="Number of bases necessary to support a multiple allele call."/>
+            <param argument="--base_fraction_cutoff" type="float" value="0.05" optional="true" min="0" label="Base Fraction Cutoff" help="Fraction of bases necessary to support a multiple allele call. Particularly useful when dealing with very high coverage samples."/>
+            <param argument="--min_matching_hashes" type="integer" value="150" optional="true" min="1" label="Min. Matching Hashes" help="Minimum number of matching hashes in a MASH screen in order for a genus to be considered present in a sample.."/>
+        </section>
+    </inputs>
+
+    <outputs>
+        <data name="report" format="csv" from_work_dir="output/confindr_report.csv" label="${tool.name} on ${on_string} report file" />
+        <data name="contamination" format="csv" from_work_dir="output/reads_contamination.csv" label="${tool.name} on ${on_string} contamination.csv" />
+        <data name="rmlst" format="csv" from_work_dir="output/reads_rmlst.csv" label="${tool.name} on ${on_string} rmlst.csv" />
+    </outputs>
+
+    <tests>
+        <test>
+            <param name="reads_input_selector" value="paired"/>
+            <param name="reads_1" value="example_R1.40000.fastq.gz"/>
+            <param name="reads_2" value="example_R2.40000.fastq.gz"/>
+            <output name="report" file="output_paired.csv"/>
+        </test>       
+    </tests>
+
+    <help><![CDATA[
+**What it does**
+
+ConFindr is a pipeline that can detect contamination in bacterial NGS data, both between and within species. It can do this with pretty darn good sensitivity - two samples mixed together with as few as 500 SNPs between them (> 99.9 percent identity!) can be identified. This allows for stringent quality control of NGS samples.
+<a target="_blank" href="https://olc-bioinformatics.github.io/ConFindr/">confindr documentation</a>
+
+**Output**
+
+ConFindr will produce a tab-seperated output file with the following outputs:
+
++--------------------------------+------------------------------------------------+
+|  Column                        | Description                                    |
++================================+================================================+
+| Sample                         | The name of the sample. ConFindr will take everything before the first underscore (_) character to be the name of the sample, as done with samples coming from an Illumina MiSeq.                                                |
++--------------------------------+------------------------------------------------+
+| Genus                          | The genus that ConFindr thinks your sample is. If ConFindr couldn't figure out what genus your sample is from, this will be NA. If multiple genera were found, they will all be listed here, separated by a :                                         |
++--------------------------------+------------------------------------------------+
+| NumContamSNVs                  | The number of times ConFindr found sites with more than one base present.                                         |
++--------------------------------+------------------------------------------------+
+| ContamStatus                   | The most important of all! Will read True if contamination is present in the sample, and False if contamination is not present. The result will be True if any of the following conditions are met:<br/>More than 1 contaminating SNV per 10000 base pairs examined was found.<br/>There is cross contamination between genera.                                                |
++--------------------------------+------------------------------------------------+
+| PercentContam                  | Based on the depth of the minor variant for sites with multiple bases, ConFindr guesses at what percent of your reads come from a contaminant. The more sequencing depth you have, the more accurate this will get. For lower levels of contamination (around 5 percent) this tends to get overestimated, but the number gets more accurate as contamination level increases, as well as sequencing depth.                                                |
++--------------------------------+------------------------------------------------+
+| PercentContamStandardDeviation | The standard deviation of the percentage contamination estimate. Very high values may indicate something strange is going on.                                                |
++--------------------------------+------------------------------------------------+
+| BasesExamined                  | The number of bases ConFindr examined when making the contamination call. Will usally be around 20kb for rMLST databases, and will vary when other databases are used.                                                |
++--------------------------------+------------------------------------------------+
+| DatabaseDownloadDate           | Date that rMLST databases were downloaded, if you have them. As these are curated and updated regularly, it's a good idea to re-run confindr_database_setup every now and then.                                                |
++--------------------------------+------------------------------------------------+
+
+ConFindr will also produce two CSV files for each sample - one called contamination.csv, \
+which shows the contaminating sites, and one called rmlst.csv, which shows ConFindr's guess \
+at which allele is present for each rMLST gene.
+
+**Example Output**
+
+::
+Sample,Genus,NumContamSNVs,ContamStatus,PercentContam,PercentContamStandardDeviation,BasesExamined,DatabaseDownloadDate
+reads,Escherichia,1,False,0,0,38198,ND
+
+
+    ]]></help>
+
+    <expand macro="citations"/>
+</tool>
