@@ -189,21 +189,14 @@
                 </element>
             </output_collection>
             <output_collection name="stats_files" type="list" count="2">
-                <element name="output_01.assembly.100_20000.phased_block" ftype="tabular"/>
-                <element name="output_01.completeness" ftype="tabular"/>
             </output_collection>
             <output_collection name="wig_files" type="list" count="2">
-                <element name="output_01.assembly.pat" ftype="wig"/>
                 <element name="output_01.assembly.mat" file="output_01.assembly.mat.wig" ftype="wig"/>
             </output_collection>
             <output_collection name="sizes_files" type="list" count="2">
-                <element name="output_01.assembly.100_20000.phased_block" ftype="tabular"/>
                 <element name="output_01.assembly.contig" file="output_01.assembly.contig.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="bed_files" type="list" count="3">
-                <element name="output_01.assembly.100_20000.phased_block" ftype="bed"/>
-                <element name="output_01.assembly.100_20000.switch" ftype="bed"/>
-                <element name="output_01.assembly.sort"/>
             </output_collection>
         </test>
         <test>
@@ -252,7 +245,6 @@
                 <element name="output_02.completeness" file="output_02.completeness.stats.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="qv_files" type="list" count="2">
-                <element name="output_02.assembly" ftype="tabular"/>
                 <element name="output_02" file="output_02_qv.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="wig_files" type="list" count="1">
@@ -337,8 +329,6 @@
                 <element name="output_03.completeness" file="output_03.completeness.stats.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="qv_files" type="list" count="3">
-                <element name="output_03.assembly_01" ftype="tabular"/>
-                <element name="output_03.assembly_02" ftype="tabular"/>
                 <element name="output_03" file="output_03_qv.tabular" ftype="tabular"/>
             </output_collection>
         </test>
@@ -383,32 +373,20 @@
                 </element>
             </output_collection>
             <output_collection name="stats_files" type="list" count="3">
-                <element name="output_04.assembly_01.100_20000.phased_block" ftype="tabular"/>
                 <element name="output_04.assembly_02.100_20000.phased_block" file="output_04.assembly_02.100_20000.phased_block.stats.tabular" ftype="tabular"/>
-                <element name="output_04.completeness"/>
             </output_collection>
             <output_collection name="qv_files" type="list" count="1">
                 <element name="output_04" file="output_04_qv.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="wig_files" type="list" count="4">
-                <element name="output_04.assembly_01.pat" ftype="wig"/>
-                <element name="output_04.assembly_01.mat" ftype="wig"/>
-                <element name="output_04.assembly_02.pat" ftype="wig"/>
-                <element name="output_04.assembly_02.mat" ftype="wig"/>
             </output_collection>
             <output_collection name="sizes_files" type="list" count="4">
-                <element name="output_04.assembly_01.100_20000.phased_block"/>
                 <element name="output_04.assembly_01.contig" file="output_04.assembly_01.contig.tabular" ftype="tabular"/>
-                <element name="output_04.assembly_02.100_20000.phased_block"/>
                 <element name="output_04.assembly_02.contig" file="output_04.assembly_02.contig.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="bed_files" type="list" count="6">
-                <element name="output_04.assembly_01.100_20000.phased_block" ftype="bed"/>
                 <element name="output_04.assembly_01.100_20000.switch" file="output_04.assembly_01.100_20000.switch.bed" ftype="bed"/>
                 <element name="output_04.assembly_01.sort" file="output_04.assembly_01.sort.bed" ftype="bed"/>
-                <element name="output_04.assembly_02.100_20000.phased_block" ftype="bed"/>
-                <element name="output_04.assembly_02.100_20000.switch" ftype="bed"/>
-                <element name="output_04.assembly_02.sort" ftype="bed"/>
             </output_collection>
         </test>
     </tests>
