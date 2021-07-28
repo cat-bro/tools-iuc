@@ -174,36 +174,29 @@
             <output_collection name="png_files" type="list" count="3">
                 <element name="output_01.assembly.mat.spectra-cn.ln" file="output_01.assembly.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="2733" delta="100"/>
+                        <has_size value="2733" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_01.assembly.pat.spectra-cn.ln" file="output_01.assembly.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="2733" delta="100"/>
+                        <has_size value="2733" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_01.hapmers.blob" file="output_01.hapmers.blob.png" ftype="png">
                     <assert_contents>
-                        <has_size value="10764" delta="100"/>
+                        <has_size value="10764" delta="1000"/>
                     </assert_contents>
                 </element>
             </output_collection>
             <output_collection name="stats_files" type="list" count="2">
-                <element name="output_01.assembly.100_20000.phased_block" ftype="tabular"/>
-                <element name="output_01.completeness" ftype="tabular"/>
             </output_collection>
             <output_collection name="wig_files" type="list" count="2">
-                <element name="output_01.assembly.pat" ftype="wig"/>
                 <element name="output_01.assembly.mat" file="output_01.assembly.mat.wig" ftype="wig"/>
             </output_collection>
             <output_collection name="sizes_files" type="list" count="2">
-                <element name="output_01.assembly.100_20000.phased_block" ftype="tabular"/>
                 <element name="output_01.assembly.contig" file="output_01.assembly.contig.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="bed_files" type="list" count="3">
-                <element name="output_01.assembly.100_20000.phased_block" ftype="bed"/>
-                <element name="output_01.assembly.100_20000.switch" ftype="bed"/>
-                <element name="output_01.assembly.sort"/>
             </output_collection>
         </test>
         <test>
@@ -219,32 +212,32 @@
             <output_collection name="png_files" type="list" count="6">
                 <element name="output_02.assembly.spectra-cn.fl" file="output_02.assembly.spectra-cn.fl.png" ftype="png">
                     <assert_contents>
-                        <has_size value="58059" delta="100"/>
+                        <has_size value="58059" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_02.assembly.spectra-cn.ln" file="output_02.assembly.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="57763" delta="100"/>
+                        <has_size value="57763" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_02.assembly.spectra-cn.st" file="output_02.assembly.spectra-cn.st.png" ftype="png">
                     <assert_contents>
-                        <has_size value="61814" delta="100"/>
+                        <has_size value="61814" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_02.spectra-asm.fl" file="output_02.spectra-asm.fl.png" ftype="png">
                     <assert_contents>
-                        <has_size value="64445" delta="100"/>
+                        <has_size value="64445" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_02.spectra-asm.ln" file="output_02.spectra-asm.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="64795" delta="100"/>
+                        <has_size value="64795" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_02.spectra-asm.st" file="output_02.spectra-asm.st.png" ftype="png">
                     <assert_contents>
-                        <has_size value="66317" delta="100"/>
+                        <has_size value="66317" delta="1000"/>
                     </assert_contents>
                 </element>
             </output_collection>
@@ -252,20 +245,19 @@
                 <element name="output_02.completeness" file="output_02.completeness.stats.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="qv_files" type="list" count="2">
-                <element name="output_02.assembly" ftype="tabular"/>
                 <element name="output_02" file="output_02_qv.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="wig_files" type="list" count="1">
                 <element name="assembly_only" ftype="wig">
                     <assert_contents>
-                        <has_size value="29909811" delta="100"/>
+                        <has_size value="29909811" delta="1000"/>
                     </assert_contents>
                 </element>
             </output_collection>
             <output_collection name="bed_files" type="list" count="1">
                 <element name="assembly_only" ftype="bed">
                     <assert_contents>
-                        <has_size value="73516121" delta="100"/>
+                        <has_size value="73516121" delta="1000"/>
                     </assert_contents>
                 </element>
             </output_collection>
@@ -284,52 +276,52 @@
             <output_collection name="png_files" type="list" count="10">
                 <element name="output_03.assembly_01.spectra-cn.fl" file="output_03.assembly_01.spectra-cn.fl.png" ftype="png">
                     <assert_contents>
-                        <has_size value="58059" delta="100"/>
+                        <has_size value="58059" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_03.assembly_01.spectra-cn.ln" file="output_03.assembly_01.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="57763" delta="100"/>
+                        <has_size value="57763" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_03.assembly_01.spectra-cn.st" file="output_03.assembly_01.spectra-cn.st.png" ftype="png">
                     <assert_contents>
-                        <has_size value="61814" delta="100"/>
+                        <has_size value="61814" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_03.assembly_02.spectra-cn.fl" file="output_03.assembly_02.spectra-cn.fl.png" ftype="png">
                     <assert_contents>
-                        <has_size value="61579" delta="100"/>
+                        <has_size value="61579" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_03.assembly_02.spectra-cn.ln" file="output_03.assembly_02.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="61538" delta="100"/>
+                        <has_size value="61538" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_03.assembly_02.spectra-cn.st" file="output_03.assembly_02.spectra-cn.st.png" ftype="png">
                     <assert_contents>
-                        <has_size value="67297" delta="100"/>
+                        <has_size value="67297" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_03.spectra-asm.ln" file="output_03.spectra-asm.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="2733" delta="100"/>
+                        <has_size value="2733" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_03.spectra-cn.fl" file="output_03.spectra-cn.fl.png" ftype="png">
                     <assert_contents>
-                        <has_size value="61397" delta="100"/>
+                        <has_size value="61397" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_03.spectra-cn.ln" file="output_03.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="61050" delta="100"/>
+                        <has_size value="61050" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_03.spectra-cn.st" file="output_03.spectra-cn.st.png" ftype="png">
                     <assert_contents>
-                        <has_size value="65243" delta="100"/>
+                        <has_size value="65243" delta="1000"/>
                     </assert_contents>
                 </element>
             </output_collection>    
@@ -337,8 +329,6 @@
                 <element name="output_03.completeness" file="output_03.completeness.stats.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="qv_files" type="list" count="3">
-                <element name="output_03.assembly_01" ftype="tabular"/>
-                <element name="output_03.assembly_02" ftype="tabular"/>
                 <element name="output_03" file="output_03_qv.tabular" ftype="tabular"/>
             </output_collection>
         </test>
@@ -358,57 +348,45 @@
             <output_collection name="png_files" type="list" count="5">
                 <element name="output_04.assembly_01.mat.spectra-cn.ln" file="output_04.assembly_01.mat.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="2733" delta="100"/>
+                        <has_size value="2733" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_04.assembly_01.pat.spectra-cn.ln" file="output_04.assembly_01.pat.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="2733" delta="100"/>
+                        <has_size value="2733" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_04.assembly_02.mat.spectra-cn.ln" file="output_04.assembly_02.mat.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="2733" delta="100"/>
+                        <has_size value="2733" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_04.assembly_02.pat.spectra-cn.ln" file="output_04.assembly_02.pat.spectra-cn.ln.png" ftype="png">
                     <assert_contents>
-                        <has_size value="2733" delta="100"/>
+                        <has_size value="2733" delta="1000"/>
                     </assert_contents>
                 </element>
                 <element name="output_04.hapmers.blob" file="output_04.hapmers.blob.png" ftype="png">
                     <assert_contents>
-                        <has_size value="10764" delta="100"/>
+                        <has_size value="10764" delta="1000"/>
                     </assert_contents>
                 </element>
             </output_collection>
             <output_collection name="stats_files" type="list" count="3">
-                <element name="output_04.assembly_01.100_20000.phased_block" ftype="tabular"/>
                 <element name="output_04.assembly_02.100_20000.phased_block" file="output_04.assembly_02.100_20000.phased_block.stats.tabular" ftype="tabular"/>
-                <element name="output_04.completeness"/>
             </output_collection>
             <output_collection name="qv_files" type="list" count="1">
                 <element name="output_04" file="output_04_qv.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="wig_files" type="list" count="4">
-                <element name="output_04.assembly_01.pat" ftype="wig"/>
-                <element name="output_04.assembly_01.mat" ftype="wig"/>
-                <element name="output_04.assembly_02.pat" ftype="wig"/>
-                <element name="output_04.assembly_02.mat" ftype="wig"/>
             </output_collection>
             <output_collection name="sizes_files" type="list" count="4">
-                <element name="output_04.assembly_01.100_20000.phased_block"/>
                 <element name="output_04.assembly_01.contig" file="output_04.assembly_01.contig.tabular" ftype="tabular"/>
-                <element name="output_04.assembly_02.100_20000.phased_block"/>
                 <element name="output_04.assembly_02.contig" file="output_04.assembly_02.contig.tabular" ftype="tabular"/>
             </output_collection>
             <output_collection name="bed_files" type="list" count="6">
-                <element name="output_04.assembly_01.100_20000.phased_block" ftype="bed"/>
                 <element name="output_04.assembly_01.100_20000.switch" file="output_04.assembly_01.100_20000.switch.bed" ftype="bed"/>
                 <element name="output_04.assembly_01.sort" file="output_04.assembly_01.sort.bed" ftype="bed"/>
-                <element name="output_04.assembly_02.100_20000.phased_block" ftype="bed"/>
-                <element name="output_04.assembly_02.100_20000.switch" ftype="bed"/>
-                <element name="output_04.assembly_02.sort" ftype="bed"/>
             </output_collection>
         </test>
     </tests>
