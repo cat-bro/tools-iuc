@@ -1,0 +1,2 @@
+Sample,Genus,NumContamSNVs,ContamStatus,PercentContam,PercentContamStandardDeviation,BasesExamined,DatabaseDownloadDate
+reads,Escherichia,1,False,0,0,38198,ND
